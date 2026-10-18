@@ -5,6 +5,9 @@ export const site = {
   domain: "msmemarg.com",
   url: "https://msmemarg.com",
   founder: "Narendra Kumar B",
+  // Palette button above WhatsApp so the client can try every colour theme. Turn off once a theme is chosen
+  // (and set DEFAULT_THEME in src/lib/themes.ts to the chosen one).
+  showThemePicker: true,
   phoneDisplay: "+91 90364 40914",
   phoneHref: "tel:+919036440914",
   // Assumed to be the same number as the phone on the card — confirm with the client.

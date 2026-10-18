@@ -11,10 +11,15 @@ npm run dev     # http://localhost:3000
 npm run build
 ```
 
-## Brand
+## Brand & colour themes
 
-- Colours come from the founder's visiting card: `brand-900` **#014425** is the card green; the rest of the `brand-*` scale and `sage-*` (the card's accent underline) are defined in `src/app/globals.css`.
-- The logo (`src/components/layout/Logo.tsx`) is redrawn as SVG from the card — three rising bars + "MSME / Marg" set in Arimo Bold. `BarsMark` is the bars alone (favicon, watermarks).
+- The card green **#014425** (logo background, key numbers, footers) is in every theme. The logo (`src/components/layout/Logo.tsx`) is redrawn as SVG from the card; its colour follows the band it sits on (white on dark, card green on light).
+- **Six themes** live in `src/lib/themes.ts`: Brass & Ivory (default), Classic Green (the first all-green version), Forest & Mint, Sage & Stone, Emerald Light, Midnight Forest.
+  - Every section is tagged with a role (`data-sec="hero"`, `"footer"`…) and components only use role tokens (`bg-s-bg`, `text-s-fg`, `text-s-accent`, `bg-s-btn`…). Each theme maps roles to surfaces, and `themeCss()` generates the CSS. Light cards inside dark bands use `.sf-paper`; dark panels use `.sf-panel`.
+  - Rule kept by every new theme: two neighbouring bands never share a surface. Inner pages put the enquiry band after a plain page section, so it has its own role there (`ctaPage`, via `<CtaBand onPage />`). Classic Green is the one exception (green header on a green hero), kept as the original design.
+  - Themes also change corner radius (Sage rounder, Emerald crisper) and button style.
+- **Theme picker** — a palette button above WhatsApp (`src/components/layout/ThemePicker.tsx`) lets the client try every theme on the live site; the choice is stored in the browser. A link like `https://msmemarg.com/?theme=forest` opens the site in that theme (ids: `brass`, `classic`, `forest`, `sage`, `emerald`, `midnight`).
+  - Once the client decides: set `DEFAULT_THEME` in `src/lib/themes.ts` and `showThemePicker: false` in `src/lib/site.ts`. With the picker off, the page ships only the default theme's CSS and ignores choices saved in browsers.
 - Business details (phone, email, address, founder) live in `src/lib/site.ts`.
 
 ## Languages

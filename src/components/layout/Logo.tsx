@@ -27,14 +27,14 @@ export function BarsMark({ className = "h-8 w-auto", animated = false }: { class
 }
 
 /**
- * Full lockup. `tone="light"` is white (for green backgrounds, like the card), `tone="dark"` is brand green (for white backgrounds).
+ * Full lockup. Its colour follows the section it sits on: white on green / dark bands (like the front of the card),
+ * card green #014425 on light bands (like the back of the card) — set per theme as --sf-logo.
  * The wordmark uses Arimo Bold (Arial metrics); textLength pins each line to the card's exact width.
  */
-export function Logo({ tone = "light", className = "h-10 w-auto", animated = false }: { tone?: "light" | "dark"; className?: string; animated?: boolean }) {
-  const color = tone === "light" ? "#ffffff" : "#014425";
+export function Logo({ className = "h-10 w-auto", animated = false }: { tone?: "light" | "dark"; className?: string; animated?: boolean }) {
   return (
     <svg viewBox="0 0 197 84" className={className} role="img" aria-label="MSME Marg">
-      <g fill={color}>
+      <g style={{ fill: "var(--sf-logo)" }}>
         {BAR_PATHS.map((d, i) => (
           <path key={i} d={d} className={animated ? "bar-grow" : undefined} style={animated ? { animationDelay: `${0.15 + i * 0.14}s` } : undefined} />
         ))}

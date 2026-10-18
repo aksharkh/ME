@@ -8,6 +8,7 @@ import { I18nProvider } from "@/i18n/client";
 import { locales } from "@/i18n/config";
 import { alternates, getDictionary, getLang } from "@/i18n/server";
 import { site } from "@/lib/site";
+import { DEFAULT_THEME, themeBootScript, themeCss } from "@/lib/themes";
 import "../globals.css";
 
 // Instrument Sans for the interface, Arimo (Arial metrics) only for the logo wordmark as printed on the card,
@@ -70,7 +71,18 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
   };
 
   return (
-    <html lang={lang === "kn" ? "kn-IN" : "en-IN"} className={`${ui.variable} ${logo.variable} ${kannada.variable} antialiased`}>
+    <html
+      lang={lang === "kn" ? "kn-IN" : "en-IN"}
+      data-theme={DEFAULT_THEME}
+      suppressHydrationWarning
+      className={`${ui.variable} ${logo.variable} ${kannada.variable} antialiased`}
+    >
+      <head>
+        {/* Colour themes (src/lib/themes.ts). While the picker is on: every theme, plus the saved choice applied
+            before first paint. Once it is off: only DEFAULT_THEME, so old saved choices no longer apply. */}
+        <style dangerouslySetInnerHTML={{ __html: site.showThemePicker ? themeCss() : themeCss([DEFAULT_THEME]) }} />
+        {site.showThemePicker && <script dangerouslySetInnerHTML={{ __html: themeBootScript() }} />}
+      </head>
       {/* suppressHydrationWarning: browser extensions (Grammarly etc.) inject attributes into <body> */}
       <body className="flex min-h-screen flex-col" suppressHydrationWarning>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />

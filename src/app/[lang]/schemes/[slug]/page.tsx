@@ -50,7 +50,7 @@ export default async function SchemePage({ params }: PageProps<"/[lang]/schemes/
         title={
           <>
             {s.name}
-            <span className="mt-1 block text-2xl font-semibold text-white/60 sm:text-3xl">{s.fullName}</span>
+            <span className="mt-1 block text-2xl font-semibold text-s-muted sm:text-3xl">{s.fullName}</span>
           </>
         }
         sub={s.tagline}
@@ -60,32 +60,32 @@ export default async function SchemePage({ params }: PageProps<"/[lang]/schemes/
         ]}
       >
         <div className="mt-10 grid max-w-4xl grid-cols-2 gap-3 sm:grid-cols-4">
-          <div className="rounded-lg bg-brand-300 p-5 text-brand-950">
+          <div className="rounded-lg bg-s-btn p-5 text-s-btn-fg">
             <div className="font-display text-3xl font-bold">{s.headline.value}</div>
-            <div className="mt-1 text-sm font-semibold text-brand-950/80">{s.headline.label}</div>
+            <div className="mt-1 text-sm font-semibold text-s-btn-fg/80">{s.headline.label}</div>
           </div>
           {s.stats.map((st) => (
-            <div key={st.label} className="rounded-lg border border-white/15 bg-white/5 p-5">
+            <div key={st.label} className="rounded-lg border border-s-line bg-s-card p-5">
               <div className="font-display text-2xl font-bold">{st.value}</div>
-              <div className="mt-1 text-sm text-white/65">{st.label}</div>
+              <div className="mt-1 text-sm text-s-muted">{st.label}</div>
             </div>
           ))}
         </div>
       </PageHero>
 
-      <section className="py-14">
+      <section data-sec="page" className="bg-s-bg py-14">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[1.5fr_1fr]">
           <div className="space-y-12">
-            <Reveal className="border-l-4 border-brand-600 bg-brand-50 p-6">
-              <div className="text-xs font-bold uppercase tracking-widest text-brand-700">{p.idealFor}</div>
-              <p className="mt-2 text-lg font-semibold leading-relaxed text-ink">{s.idealFor}</p>
+            <Reveal className="border-l-4 border-s-accent bg-s-soft p-6">
+              <div className="text-xs font-bold uppercase tracking-widest text-s-accent">{p.idealFor}</div>
+              <p className="mt-2 text-lg font-semibold leading-relaxed text-s-fg">{s.idealFor}</p>
             </Reveal>
 
             <Block title={p.benefits} icon={<BadgeIndianRupee className="h-5 w-5" />}>
               <ul className="grid gap-3 sm:grid-cols-2">
                 {s.benefits.map((b) => (
-                  <li key={b} className="flex gap-3 rounded-lg border-2 border-brand-900/10 bg-white p-4 text-ink-2">
-                    <ArrowRight className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
+                  <li key={b} className="flex gap-3 rounded-lg border-2 border-s-card-line bg-s-card p-4 text-s-text">
+                    <ArrowRight className="mt-0.5 h-5 w-5 shrink-0 text-s-accent" />
                     {b}
                   </li>
                 ))}
@@ -95,8 +95,8 @@ export default async function SchemePage({ params }: PageProps<"/[lang]/schemes/
             <Block title={p.eligibility} icon={<Users className="h-5 w-5" />}>
               <ul className="space-y-2.5">
                 {s.eligibility.map((e) => (
-                  <li key={e} className="flex gap-3 text-ink-2">
-                    <span className="mt-2 h-2 w-2 shrink-0 bg-brand-700" />
+                  <li key={e} className="flex gap-3 text-s-text">
+                    <span className="mt-2 h-2 w-2 shrink-0 bg-s-accent" />
                     {e}
                   </li>
                 ))}
@@ -107,9 +107,9 @@ export default async function SchemePage({ params }: PageProps<"/[lang]/schemes/
               <ol>
                 {s.process.map((step, i) => (
                   <li key={step} className="relative flex gap-4 pb-6 last:pb-0">
-                    {i < s.process.length - 1 && <span className="absolute left-[19px] top-10 h-[calc(100%-2.5rem)] w-0.5 bg-line" />}
-                    <span className="relative grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-brand-900 font-display font-bold text-white">{i + 1}</span>
-                    <span className="pt-2 font-semibold text-ink">{step}</span>
+                    {i < s.process.length - 1 && <span className="absolute left-[19px] top-10 h-[calc(100%-2.5rem)] w-0.5 bg-s-line" />}
+                    <span className="relative grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-s-strong font-display font-bold text-s-on-strong">{i + 1}</span>
+                    <span className="pt-2 font-semibold text-s-fg">{step}</span>
                   </li>
                 ))}
               </ol>
@@ -118,7 +118,7 @@ export default async function SchemePage({ params }: PageProps<"/[lang]/schemes/
             <Block title={p.documents} icon={<FileText className="h-5 w-5" />}>
               <div className="flex flex-wrap gap-2">
                 {s.documents.map((d) => (
-                  <span key={d} className="rounded-lg border-2 border-brand-900/10 bg-white px-4 py-2 text-sm font-semibold text-ink-2">
+                  <span key={d} className="rounded-lg border-2 border-s-card-line bg-s-card px-4 py-2 text-sm font-semibold text-s-text">
                     {d}
                   </span>
                 ))}
@@ -127,9 +127,9 @@ export default async function SchemePage({ params }: PageProps<"/[lang]/schemes/
           </div>
 
           <aside className="lg:sticky lg:top-28 lg:self-start">
-            <div className="rounded-xl border-2 border-brand-900/10 bg-white p-6">
-              <div className="font-display text-2xl font-bold text-ink">{fill(p.applyTitle, { name: s.name })}</div>
-              <p className="mt-1 text-sm text-ink-3">{p.applySub}</p>
+            <div className="rounded-xl border-2 border-s-card-line bg-s-card p-6">
+              <div className="font-display text-2xl font-bold text-s-fg">{fill(p.applyTitle, { name: s.name })}</div>
+              <p className="mt-1 text-sm text-s-text">{p.applySub}</p>
               <div className="mt-5">
                 <EnquiryForm defaultScheme={s.slug} compact />
               </div>
@@ -138,7 +138,7 @@ export default async function SchemePage({ params }: PageProps<"/[lang]/schemes/
               href={s.officialUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 flex items-center justify-between rounded-lg border-2 border-brand-900/10 bg-white px-5 py-4 text-sm font-semibold text-ink-3 hover:border-brand-900"
+              className="mt-4 flex items-center justify-between rounded-lg border-2 border-s-card-line bg-s-card px-5 py-4 text-sm font-semibold text-s-text hover:border-s-accent"
             >
               {fill(p.official, { host: new URL(s.officialUrl).hostname })}
               <ArrowUpRight className="h-4 w-4" />
@@ -148,7 +148,7 @@ export default async function SchemePage({ params }: PageProps<"/[lang]/schemes/
       </section>
 
       {calc && (
-        <section className="border-t border-line bg-paper-2 py-16">
+        <section data-sec="pageAlt" className="border-t border-s-line bg-s-bg py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <SectionHeading label={p.calcLabel} title={t.calc.meta[calc.id].title} sub={t.calc.meta[calc.id].desc} />
             <div className="mt-10">
@@ -159,7 +159,7 @@ export default async function SchemePage({ params }: PageProps<"/[lang]/schemes/
       )}
 
       {others.length > 0 && (
-        <section className="py-16">
+        <section data-sec="page" className="bg-s-bg py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <SectionHeading label={p.alsoLabel} title={p.alsoTitle} />
             <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -171,7 +171,9 @@ export default async function SchemePage({ params }: PageProps<"/[lang]/schemes/
         </section>
       )}
 
-      <p className="mx-auto max-w-7xl px-4 pb-16 text-xs text-steel sm:px-6">{p.note}</p>
+      <div data-sec="page" className="bg-s-bg">
+        <p className="mx-auto max-w-7xl px-4 pb-16 text-xs text-s-muted sm:px-6">{p.note}</p>
+      </div>
     </>
   );
 }
@@ -179,8 +181,8 @@ export default async function SchemePage({ params }: PageProps<"/[lang]/schemes/
 function Block({ title, icon, children }: { title: string; icon: ReactNode; children: ReactNode }) {
   return (
     <Reveal>
-      <h2 className="font-display flex items-center gap-3 text-2xl font-bold text-ink">
-        <span className="grid h-9 w-9 place-items-center rounded-lg bg-brand-50 text-brand-700">{icon}</span>
+      <h2 className="font-display flex items-center gap-3 text-2xl font-bold text-s-fg">
+        <span className="grid h-9 w-9 place-items-center rounded-lg bg-s-soft text-s-accent">{icon}</span>
         {title}
       </h2>
       <div className="mt-5">{children}</div>

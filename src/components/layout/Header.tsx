@@ -31,13 +31,14 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 bg-brand-900 text-white transition-shadow duration-300 ${
-        scrolled ? "shadow-[0_10px_30px_-12px_rgba(1,44,24,0.6)]" : ""
+      data-sec="header"
+      className={`sticky top-0 z-50 border-b border-s-line bg-s-bg/95 text-s-fg backdrop-blur transition-shadow duration-300 ${
+        scrolled ? "shadow-[0_10px_30px_-18px_rgba(18,26,22,0.45)]" : ""
       }`}
     >
       <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between gap-3 px-4 sm:px-6">
         <Link href={href("/")} className="shrink-0" aria-label="MSME Marg — home">
-          <Logo tone="light" className="h-11 w-auto" />
+          <Logo tone="dark" className="h-11 w-auto" />
         </Link>
 
         <nav className="hidden items-center gap-0.5 xl:flex" aria-label="Main">
@@ -48,19 +49,19 @@ export function Header() {
                 key={item.href}
                 href={href(item.href)}
                 className={`relative whitespace-nowrap rounded-lg px-3 py-2 text-[15px] font-semibold transition-colors ${
-                  active ? "text-white" : "text-white/75 hover:text-white"
+                  active ? "text-s-num" : "text-s-text hover:text-s-fg"
                 }`}
               >
                 {t.nav[item.key]}
-                {active && <span className="absolute inset-x-3 -bottom-0.5 h-[3px] rounded-full bg-brand-300" />}
+                {active && <span className="absolute inset-x-3 -bottom-0.5 h-[3px] rounded-full bg-s-accent2" />}
               </Link>
             );
           })}
         </nav>
 
         <div className="flex items-center gap-2">
-          <a href={site.phoneHref} className="hidden items-center gap-2 whitespace-nowrap px-2 text-sm font-bold text-white 2xl:flex">
-            <Phone className="h-4 w-4 text-brand-300" />
+          <a href={site.phoneHref} className="hidden items-center gap-2 whitespace-nowrap px-2 text-sm font-bold text-s-num 2xl:flex">
+            <Phone className="h-4 w-4 text-s-accent" />
             {site.phoneDisplay}
           </a>
           <button
@@ -69,20 +70,20 @@ export function Header() {
             lang={lang === "en" ? "kn" : "en"}
             aria-label={t.nav.switchLabel}
             title={t.nav.switchLabel}
-            className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-xl border-2 border-white/20 px-3 py-2 text-sm font-bold text-white transition-colors hover:border-white/60"
+            className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-xl border-2 border-s-line px-3 py-2 text-sm font-bold text-s-fg transition-colors hover:border-s-accent"
           >
-            <Languages className="h-4 w-4 text-brand-300" />
+            <Languages className="h-4 w-4 text-s-accent" />
             {t.nav.switchTo}
           </button>
           <Link
             href={href("/eligibility")}
-            className="hidden whitespace-nowrap rounded-xl bg-brand-300 px-4 py-2.5 text-sm font-bold text-brand-950 shadow-[0_4px_0_0_var(--color-brand-500)] transition-all hover:translate-y-[2px] hover:shadow-[0_2px_0_0_var(--color-brand-500)] md:inline-flex"
+            className="hidden whitespace-nowrap rounded-xl bg-s-btn px-4 py-2.5 text-sm font-bold text-s-btn-fg shadow-[0_4px_0_0_var(--sf-btn-edge)] transition-all hover:translate-y-[2px] hover:shadow-[0_2px_0_0_var(--sf-btn-edge)] md:inline-flex"
           >
             {t.cta.eligibility}
           </Link>
           <button
             onClick={() => setOpen((v) => !v)}
-            className="grid h-11 w-11 place-items-center rounded-xl border-2 border-white/20 text-white xl:hidden"
+            className="grid h-11 w-11 place-items-center rounded-xl border-2 border-s-line text-s-fg xl:hidden"
             aria-label={open ? t.nav.menuClose : t.nav.menuOpen}
             aria-expanded={open}
           >
@@ -97,7 +98,7 @@ export function Header() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden border-t border-white/10 bg-brand-900 xl:hidden"
+            className="overflow-hidden border-t border-s-line bg-s-bg xl:hidden"
             aria-label="Mobile"
           >
             <div className="flex flex-col gap-1 px-4 py-4">
@@ -106,7 +107,7 @@ export function Header() {
                   key={item.href}
                   href={href(item.href)}
                   onClick={() => setOpen(false)}
-                  className="block rounded-xl px-4 py-3 text-lg font-semibold text-white/90 hover:bg-white/10"
+                  className="block rounded-xl px-4 py-3 text-lg font-semibold text-s-fg hover:bg-s-soft"
                 >
                   {t.nav[item.key]}
                 </Link>
@@ -114,12 +115,12 @@ export function Header() {
               <Link
                 href={href("/eligibility")}
                 onClick={() => setOpen(false)}
-                className="mt-2 rounded-xl bg-brand-300 px-4 py-3.5 text-center text-lg font-bold text-brand-950"
+                className="mt-2 rounded-xl bg-s-btn px-4 py-3.5 text-center text-lg font-bold text-s-btn-fg"
               >
                 {t.cta.eligibility}
               </Link>
-              <a href={site.phoneHref} className="mt-2 flex items-center justify-center gap-2 rounded-xl border-2 border-white/20 px-4 py-3 font-bold text-white">
-                <Phone className="h-4 w-4 text-brand-300" /> {site.phoneDisplay}
+              <a href={site.phoneHref} className="mt-2 flex items-center justify-center gap-2 rounded-xl border-2 border-s-line px-4 py-3 font-bold text-s-fg">
+                <Phone className="h-4 w-4 text-s-accent" /> {site.phoneDisplay}
               </a>
             </div>
           </motion.nav>

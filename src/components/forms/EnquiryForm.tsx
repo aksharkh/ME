@@ -38,7 +38,7 @@ export function EnquiryForm({ defaultScheme = "", compact = false }: { defaultSc
   }
 
   const field =
-    "w-full rounded-xl border-2 border-line bg-white px-4 py-3 text-base text-ink outline-none transition-colors placeholder:text-steel-2 focus:border-brand-600";
+    "w-full rounded-xl border-2 border-s-field-line bg-s-field px-4 py-3 text-base text-s-fg outline-none transition-colors placeholder:text-s-muted focus:border-s-accent";
 
   return (
     <AnimatePresence mode="wait">
@@ -48,17 +48,17 @@ export function EnquiryForm({ defaultScheme = "", compact = false }: { defaultSc
             initial={{ scale: 0, rotate: -90 }}
             animate={{ scale: 1, rotate: 0 }}
             transition={{ type: "spring", stiffness: 200, damping: 12 }}
-            className="mx-auto grid h-20 w-20 place-items-center rounded-full bg-brand-600 text-white"
+            className="mx-auto grid h-20 w-20 place-items-center rounded-full bg-s-btn text-s-btn-fg"
           >
             <PhoneCall className="h-9 w-9" />
           </motion.div>
-          <h3 className="font-display mt-5 text-2xl font-bold text-ink">{fill(f.thanks, { name: name ? `, ${name.split(" ")[0]}` : "" })}</h3>
-          <p className="mt-2 text-ink-3">{f.thanksSub}</p>
+          <h3 className="font-display mt-5 text-2xl font-bold text-s-fg">{fill(f.thanks, { name: name ? `, ${name.split(" ")[0]}` : "" })}</h3>
+          <p className="mt-2 text-s-text">{f.thanksSub}</p>
           <a
             href={whatsappLink(t.cta.whatsappMessage)}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-5 inline-flex items-center gap-2 rounded-xl bg-[#25D366] px-5 py-3 font-bold text-white"
+            className="mt-5 inline-flex items-center gap-2 rounded-xl bg-[#25D366] px-5 py-3 font-bold text-[#ffffff]"
           >
             <MessageCircle className="h-5 w-5" /> {f.thanksWhatsapp}
           </a>
@@ -69,13 +69,13 @@ export function EnquiryForm({ defaultScheme = "", compact = false }: { defaultSc
           <input type="text" name="company" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
 
           <label className="block">
-            <span className="mb-1.5 block text-sm font-bold text-ink-3">{f.name}</span>
+            <span className="mb-1.5 block text-sm font-bold text-s-text">{f.name}</span>
             <input name="name" required minLength={2} maxLength={80} autoComplete="name" placeholder={f.namePh} className={field} />
           </label>
           <label className="block">
-            <span className="mb-1.5 block text-sm font-bold text-ink-3">{f.phone}</span>
+            <span className="mb-1.5 block text-sm font-bold text-s-text">{f.phone}</span>
             <div className="flex">
-              <span className="grid place-items-center rounded-l-xl border-2 border-r-0 border-line bg-mist px-3 font-bold text-ink-3">+91</span>
+              <span className="grid place-items-center rounded-l-xl border-2 border-r-0 border-s-field-line bg-s-soft px-3 font-bold text-s-text">+91</span>
               <input
                 name="phone"
                 required
@@ -90,11 +90,11 @@ export function EnquiryForm({ defaultScheme = "", compact = false }: { defaultSc
             </div>
           </label>
           <label className="block">
-            <span className="mb-1.5 block text-sm font-bold text-ink-3">{f.city}</span>
+            <span className="mb-1.5 block text-sm font-bold text-s-text">{f.city}</span>
             <input name="city" required maxLength={80} autoComplete="address-level2" placeholder={f.cityPh} className={field} />
           </label>
           <label className="block">
-            <span className="mb-1.5 block text-sm font-bold text-ink-3">{f.business}</span>
+            <span className="mb-1.5 block text-sm font-bold text-s-text">{f.business}</span>
             <select name="business" className={field} defaultValue="">
               <option value="" disabled>
                 {f.select}
@@ -105,7 +105,7 @@ export function EnquiryForm({ defaultScheme = "", compact = false }: { defaultSc
             </select>
           </label>
           <label className="block">
-            <span className="mb-1.5 block text-sm font-bold text-ink-3">{f.amount}</span>
+            <span className="mb-1.5 block text-sm font-bold text-s-text">{f.amount}</span>
             <select name="amount" className={field} defaultValue="">
               <option value="" disabled>
                 {f.select}
@@ -116,7 +116,7 @@ export function EnquiryForm({ defaultScheme = "", compact = false }: { defaultSc
             </select>
           </label>
           <label className="block">
-            <span className="mb-1.5 block text-sm font-bold text-ink-3">{f.scheme}</span>
+            <span className="mb-1.5 block text-sm font-bold text-s-text">{f.scheme}</span>
             <select name="scheme" className={field} defaultValue={defaultScheme}>
               <option value="">{f.schemeAny}</option>
               {getSchemes(t).map((s) => (
@@ -128,7 +128,7 @@ export function EnquiryForm({ defaultScheme = "", compact = false }: { defaultSc
           </label>
           {!compact && (
             <label className="block sm:col-span-2">
-              <span className="mb-1.5 block text-sm font-bold text-ink-3">{f.message}</span>
+              <span className="mb-1.5 block text-sm font-bold text-s-text">{f.message}</span>
               <textarea name="message" rows={3} maxLength={1000} placeholder={f.messagePh} className={field} />
             </label>
           )}
@@ -137,7 +137,7 @@ export function EnquiryForm({ defaultScheme = "", compact = false }: { defaultSc
             <button
               type="submit"
               disabled={status === "sending"}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-700 px-6 py-4 text-lg font-bold text-white shadow-[0_6px_0_0_var(--color-brand-950)] transition-all hover:translate-y-[2px] hover:shadow-[0_4px_0_0_var(--color-brand-950)] active:translate-y-[6px] active:shadow-none disabled:opacity-70"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-s-btn px-6 py-4 text-lg font-bold text-s-btn-fg shadow-[0_6px_0_0_var(--sf-btn-edge)] transition-all hover:translate-y-[2px] hover:shadow-[0_4px_0_0_var(--sf-btn-edge)] active:translate-y-[6px] active:shadow-none disabled:opacity-70"
             >
               {status === "sending" ? (
                 <>
@@ -154,7 +154,7 @@ export function EnquiryForm({ defaultScheme = "", compact = false }: { defaultSc
                 {error}
               </p>
             )}
-            <p className="mt-3 text-center text-xs text-steel">{f.privacy}</p>
+            <p className="mt-3 text-center text-xs text-s-muted">{f.privacy}</p>
           </div>
         </motion.form>
       )}

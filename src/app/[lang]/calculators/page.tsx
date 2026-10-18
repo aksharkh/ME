@@ -27,7 +27,7 @@ export default async function CalculatorsPage() {
               <a
                 key={c.id}
                 href={`#${c.id}`}
-                className="flex items-center gap-2 rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-sm font-bold transition-colors hover:border-brand-600 hover:bg-brand-700"
+                className="flex items-center gap-2 rounded-lg border border-s-line bg-s-card px-4 py-3 text-sm font-bold transition-colors hover:border-s-accent hover:bg-s-soft"
               >
                 <Icon className="h-4 w-4" /> {t.calc.meta[c.id].short}
               </a>
@@ -43,13 +43,13 @@ export default async function CalculatorsPage() {
           return (
             <section key={c.id} id={c.id} className="scroll-mt-28">
               <div className="mb-8 flex items-start gap-4">
-                <span className="grid h-14 w-14 shrink-0 place-items-center rounded-lg bg-brand-900 text-brand-300">
+                <span className="grid h-14 w-14 shrink-0 place-items-center rounded-lg bg-s-strong text-s-on-strong">
                   <Icon className="h-7 w-7" />
                 </span>
                 <div>
                   <Eyebrow>{fill(p.counter, { i: i + 1, n: calculators.length })}</Eyebrow>
-                  <h2 className="font-display mt-2 text-3xl font-bold text-ink sm:text-4xl">{m.title}</h2>
-                  <p className="mt-1 text-ink-3">{m.desc}</p>
+                  <h2 className="font-display mt-2 text-3xl font-bold text-s-fg sm:text-4xl">{m.title}</h2>
+                  <p className="mt-1 text-s-text">{m.desc}</p>
                 </div>
               </div>
               <c.Component />
@@ -57,15 +57,15 @@ export default async function CalculatorsPage() {
           );
         })}
 
-        <div className="rounded-xl bg-brand-700 p-8 text-white sm:p-12">
+        <div className="rounded-xl border-2 border-s-accent/40 bg-s-soft p-8 text-s-fg sm:p-12">
           <h2 className="font-display text-3xl font-bold sm:text-4xl">{p.boxTitle}</h2>
-          <p className="mt-2 max-w-xl text-lg text-white/90">{p.boxSub}</p>
-          <Link href={localePath(lang, "/eligibility")} className={`${btn.dark} mt-6`}>
+          <p className="mt-2 max-w-xl text-lg text-s-text">{p.boxSub}</p>
+          <Link href={localePath(lang, "/eligibility")} className={`${btn.primary} mt-6`}>
             {p.boxCta} <ArrowRight className="h-5 w-5" />
           </Link>
         </div>
 
-        <p className="text-xs text-steel">{p.note}</p>
+        <p className="text-xs text-s-muted">{p.note}</p>
       </div>
     </>
   );

@@ -35,7 +35,7 @@ export default function OpengraphImage() {
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ fontSize: 70, fontWeight: 800, lineHeight: 1.05 }}>Government-backed loans</div>
-          <div style={{ fontSize: 70, fontWeight: 800, lineHeight: 1.05, color: "#8fd9ae" }}>& subsidy for your business.</div>
+          <div style={{ fontSize: 70, fontWeight: 800, lineHeight: 1.05, color: "#ddb150" }}>& subsidy for your business.</div>
           <div style={{ marginTop: 26, fontSize: 30, color: "rgba(255,255,255,0.75)" }}>
             Financial Consultant for MSMEs · Bengaluru · +91 90364 40914
           </div>
@@ -47,7 +47,7 @@ export default function OpengraphImage() {
             ["10 Crore", "CGTMSE, no collateral"],
           ].map(([v, l]) => (
             <div key={l} style={{ display: "flex", flexDirection: "column", background: "rgba(255,255,255,0.08)", borderRadius: 18, padding: "16px 26px" }}>
-              <div style={{ fontSize: 38, fontWeight: 800, color: "#8fd9ae" }}>{v}</div>
+              <div style={{ fontSize: 38, fontWeight: 800, color: "#ddb150" }}>{v}</div>
               <div style={{ fontSize: 22, color: "rgba(255,255,255,0.75)" }}>{l}</div>
             </div>
           ))}

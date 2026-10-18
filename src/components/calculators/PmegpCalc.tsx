@@ -53,20 +53,20 @@ export function PmegpCalc() {
             ]}
           />
           <RangeField label={c.cost} value={value} min={2 * LAKH} max={max} step={LAKH / 2} onChange={setCost} display={short} hint={c.costHint} />
-          <p className="text-xs leading-relaxed text-steel">{c.specialNote}</p>
+          <p className="text-xs leading-relaxed text-s-muted">{c.specialNote}</p>
         </>
       }
       result={
         <div className="flex h-full flex-col">
           <BigResult label={c.result} value={r.subsidy} format={short} />
-          <p className="mt-1 text-sm text-white/60">{fill(c.resultNote, { pct: Math.round(r.subsidyPct * 100) })}</p>
+          <p className="mt-1 text-sm text-s-muted">{fill(c.resultNote, { pct: Math.round(r.subsidyPct * 100) })}</p>
 
           <div className="mt-6">
             <MoneyBar
               parts={[
-                { label: common.yourMoney, value: r.own, color: "#e2b33c" },
-                { label: common.subsidy, value: r.subsidy, color: "#8fd9ae" },
-                { label: common.loanYouRepay, value: r.effectiveLoan, color: "#ffffff" },
+                { label: common.yourMoney, value: r.own, color: "var(--sf-text)" },
+                { label: common.subsidy, value: r.subsidy, color: "var(--sf-accent)" },
+                { label: common.loanYouRepay, value: r.effectiveLoan, color: "var(--sf-accent2)" },
               ]}
             />
           </div>
@@ -81,7 +81,7 @@ export function PmegpCalc() {
 
           <Link
             href={href("/contact?scheme=pmegp")}
-            className="mt-auto inline-flex items-center justify-center gap-2 rounded-xl bg-brand-300 px-5 py-3.5 font-bold text-brand-950 transition-transform hover:-translate-y-0.5"
+            className="mt-auto inline-flex items-center justify-center gap-2 rounded-xl bg-s-btn px-5 py-3.5 font-bold text-s-btn-fg transition-transform hover:-translate-y-0.5"
           >
             {c.cta} <ArrowRight className="h-4 w-4" />
           </Link>

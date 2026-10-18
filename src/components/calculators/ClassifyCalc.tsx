@@ -50,9 +50,9 @@ export function ClassifyCalc() {
             display={(p) => short(toValue(p, ...TURN))}
             hint={c.turnoverHint}
           />
-          <div className="overflow-hidden rounded-xl border border-line">
+          <div className="overflow-hidden rounded-xl border border-s-line">
             <table className="w-full text-left text-sm">
-              <thead className="bg-mist text-xs uppercase tracking-wider text-steel">
+              <thead className="bg-s-soft text-xs uppercase tracking-wider text-s-muted">
                 <tr>
                   <th className="px-4 py-2.5">{c.colCategory}</th>
                   <th className="px-4 py-2.5">{c.colInvestment}</th>
@@ -61,7 +61,7 @@ export function ClassifyCalc() {
               </thead>
               <tbody>
                 {MSME_LIMITS.map((l) => (
-                  <tr key={l.cls} className={`border-t border-line ${l.cls === cls ? "bg-brand-50 font-bold" : ""}`}>
+                  <tr key={l.cls} className={`border-t border-s-line ${l.cls === cls ? "bg-s-soft font-bold" : ""}`}>
                     <td className="px-4 py-2.5">{c.classes[l.cls]}</td>
                     <td className="tabular px-4 py-2.5">{short(l.investment)}</td>
                     <td className="tabular px-4 py-2.5">{short(l.turnover)}</td>
@@ -69,31 +69,31 @@ export function ClassifyCalc() {
                 ))}
               </tbody>
             </table>
-            <p className="border-t border-line px-4 py-2 text-[11px] text-steel">{c.revised}</p>
+            <p className="border-t border-s-line px-4 py-2 text-[11px] text-s-muted">{c.revised}</p>
           </div>
         </>
       }
       result={
         <div className="flex h-full flex-col">
-          <div className="text-xs font-bold uppercase tracking-[0.16em] text-white/60">{c.youAre}</div>
+          <div className="text-xs font-bold uppercase tracking-[0.16em] text-s-muted">{c.youAre}</div>
           <motion.div
             key={cls}
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className={`font-display mt-1 text-4xl font-bold leading-tight sm:text-5xl ${cls === "Large" ? "text-white" : "text-[#8fd9ae]"}`}
+            className={`font-display mt-1 text-4xl font-bold leading-tight sm:text-5xl ${cls === "Large" ? "text-s-fg" : "text-s-accent"}`}
           >
             {cls === "Large" ? c.classes.Large : fill(c.enterprise, { cls: c.classes[cls] })}
           </motion.div>
 
-          <div className="mt-8 flex items-end justify-between gap-2 border-b-4 border-white/20 pb-1">
+          <div className="mt-8 flex items-end justify-between gap-2 border-b-4 border-s-line pb-1">
             {(Object.keys(sizes) as MsmeClass[]).map((k) => {
               const active = k === cls;
               return (
                 <div key={k} className="flex flex-1 flex-col items-center gap-2">
                   <motion.div animate={{ y: active ? -8 : 0, opacity: active ? 1 : 0.35 }} transition={{ type: "spring", stiffness: 300, damping: 18 }}>
-                    <Factory style={{ width: sizes[k], height: sizes[k] }} className={active ? "text-brand-300" : "text-white"} />
+                    <Factory style={{ width: sizes[k], height: sizes[k] }} className={active ? "text-s-accent" : "text-s-fg"} />
                   </motion.div>
-                  <span className={`text-[11px] font-bold uppercase tracking-wider ${active ? "text-brand-300" : "text-white/40"}`}>{c.classes[k]}</span>
+                  <span className={`text-[11px] font-bold uppercase tracking-wider ${active ? "text-s-accent" : "text-s-muted"}`}>{c.classes[k]}</span>
                 </div>
               );
             })}
@@ -101,8 +101,8 @@ export function ClassifyCalc() {
 
           <ul className="mt-8 space-y-3">
             {c.perks[cls].map((p) => (
-              <motion.li key={cls + p} initial={{ x: 12, opacity: 0 }} animate={{ x: 0, opacity: 1 }} className="flex gap-3 text-sm text-white/85">
-                <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-gold" />
+              <motion.li key={cls + p} initial={{ x: 12, opacity: 0 }} animate={{ x: 0, opacity: 1 }} className="flex gap-3 text-sm text-s-text">
+                <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-s-accent" />
                 {p}
               </motion.li>
             ))}

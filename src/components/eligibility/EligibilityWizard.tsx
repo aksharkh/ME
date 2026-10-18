@@ -154,17 +154,17 @@ export function EligibilityWizard() {
       <div className="mb-8 flex items-center gap-4">
         <svg viewBox="-25 -25 50 50" className="h-11 w-11 shrink-0" aria-hidden>
           <motion.g initial={false} animate={{ rotate: progress * 360 }} transition={{ type: "spring", stiffness: 60 }}>
-            <path d={GEAR} fill="#157a46" />
-            <circle r="7" fill="#ffffff" />
+            <path d={GEAR} style={{ fill: "var(--sf-accent2)" }} />
+            <circle r="7" style={{ fill: "var(--sf-bg)" }} />
           </motion.g>
         </svg>
         <div className="flex-1">
-          <div className="flex justify-between text-xs font-bold uppercase tracking-wider text-steel">
+          <div className="flex justify-between text-xs font-bold uppercase tracking-wider text-s-muted">
             <span>{done ? e.results : fill(e.progress, { n: step + 1, total: TOTAL })}</span>
             <span>{Math.round(progress * 100)}%</span>
           </div>
-          <div className="mt-2 h-3 overflow-hidden rounded-full bg-mist">
-            <motion.div className="belt animate-belt h-full rounded-full" style={{ backgroundColor: "#157a46" }} initial={false} animate={{ width: `${progress * 100}%` }} />
+          <div className="mt-2 h-3 overflow-hidden rounded-full bg-s-soft">
+            <motion.div className="belt animate-belt h-full rounded-full" style={{ backgroundColor: "var(--sf-btn)" }} initial={false} animate={{ width: `${progress * 100}%` }} />
           </div>
         </div>
       </div>
@@ -192,13 +192,13 @@ export function EligibilityWizard() {
                       key={l}
                       type="button"
                       onClick={() => setA({ ...a, amount: l * LAKH })}
-                      className={`rounded-lg border-2 px-4 py-2 text-sm font-bold ${a.amount === l * LAKH ? "border-brand-600 bg-brand-50" : "border-line bg-white"}`}
+                      className={`rounded-lg border-2 px-4 py-2 text-sm font-bold ${a.amount === l * LAKH ? "border-s-accent bg-s-soft" : "border-s-line bg-s-card"}`}
                     >
                       {short(l * LAKH)}
                     </button>
                   ))}
                 </div>
-                <button type="button" onClick={() => go(step + 1)} className="mt-8 inline-flex items-center gap-2 rounded-xl bg-brand-700 px-6 py-3.5 font-bold text-white shadow-[0_5px_0_0_var(--color-brand-950)]">
+                <button type="button" onClick={() => go(step + 1)} className="mt-8 inline-flex items-center gap-2 rounded-xl bg-s-btn px-6 py-3.5 font-bold text-s-btn-fg shadow-[0_5px_0_0_var(--sf-btn-edge)]">
                   {e.next} <ArrowRight className="h-5 w-5" />
                 </button>
               </StepCard>
@@ -217,15 +217,15 @@ export function EligibilityWizard() {
 
             {done && (
               <div>
-                <div className="blueprint-dark rounded-xl bg-brand-900 p-8 text-white sm:p-10">
-                  <div className="inline-flex items-center gap-2 rounded bg-brand-600 px-2.5 py-1 text-sm font-bold">
+                <div className="sf-panel blueprint rounded-xl bg-s-bg p-8 text-s-text sm:p-10">
+                  <div className="inline-flex items-center gap-2 rounded bg-s-btn px-2.5 py-1 text-sm font-bold text-s-btn-fg">
                     <Route className="h-4 w-4" /> {e.goodNews}
                   </div>
-                  <h2 className="font-display mt-4 text-3xl font-bold sm:text-4xl">{fill(e.qualify, { n: results.length })}</h2>
+                  <h2 className="font-display mt-4 text-3xl font-bold text-s-fg sm:text-4xl">{fill(e.qualify, { n: results.length })}</h2>
                   {best > 0 && (
                     <div className="mt-6">
-                      <div className="text-sm font-bold uppercase tracking-widest text-white/60">{e.estimate}</div>
-                      <div className="font-display text-5xl font-bold text-[#8fd9ae] sm:text-6xl">
+                      <div className="text-sm font-bold uppercase tracking-widest text-s-muted">{e.estimate}</div>
+                      <div className="font-display text-5xl font-bold text-s-accent sm:text-6xl">
                         <AnimatedNumber value={best} format={short} />
                       </div>
                     </div>
@@ -240,25 +240,25 @@ export function EligibilityWizard() {
                       <Link
                         key={r.slug}
                         href={href(`/schemes/${s.slug}`)}
-                        className="group flex flex-wrap items-center gap-4 rounded-xl border-2 border-brand-900/10 bg-white p-5 transition-colors hover:border-brand-600"
+                        className="group flex flex-wrap items-center gap-4 rounded-xl border-2 border-s-card-line bg-s-card p-5 transition-colors hover:border-s-accent"
                       >
-                        <span className={`rounded px-2.5 py-1 text-xs font-bold uppercase ${r.fit === "strong" ? "bg-brand-50 text-brand-600" : "bg-sage-100 text-sage-700"}`}>
+                        <span className={`rounded px-2.5 py-1 text-xs font-bold uppercase ${r.fit === "strong" ? "bg-s-btn text-s-btn-fg" : "bg-s-soft text-s-accent"}`}>
                           {r.fit === "strong" ? e.strong : e.possible}
                         </span>
                         <div className="min-w-0 flex-1">
-                          <div className="font-display text-lg font-bold text-ink">{s.name}</div>
-                          <div className="text-sm text-ink-3">{fill(reason, r.vars ?? {})}</div>
+                          <div className="font-display text-lg font-bold text-s-fg">{s.name}</div>
+                          <div className="text-sm text-s-text">{fill(reason, r.vars ?? {})}</div>
                         </div>
-                        <div className="font-display text-xl font-bold text-brand-700">{fill(headline, r.vars ?? {})}</div>
-                        <ArrowRight className="h-5 w-5 text-steel transition-transform group-hover:translate-x-1" />
+                        <div className="font-display text-xl font-bold text-s-accent">{fill(headline, r.vars ?? {})}</div>
+                        <ArrowRight className="h-5 w-5 text-s-muted transition-transform group-hover:translate-x-1" />
                       </Link>
                     );
                   })}
                 </div>
 
-                <div className="mt-10 rounded-xl border-2 border-brand-900/10 bg-white p-6 sm:p-8">
-                  <h3 className="font-display text-2xl font-bold text-ink">{e.expertTitle}</h3>
-                  <p className="mt-1 text-ink-3">{e.expertSub}</p>
+                <div className="mt-10 rounded-xl border-2 border-s-card-line bg-s-card p-6 sm:p-8">
+                  <h3 className="font-display text-2xl font-bold text-s-fg">{e.expertTitle}</h3>
+                  <p className="mt-1 text-s-text">{e.expertSub}</p>
                   <div className="mt-6">
                     <EnquiryForm compact defaultScheme={results[0]?.slug} />
                   </div>
@@ -270,7 +270,7 @@ export function EligibilityWizard() {
                     setA({ amount: 15 * LAKH });
                     go(0);
                   }}
-                  className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-steel hover:text-ink"
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-s-muted hover:text-s-fg"
                 >
                   <RotateCcw className="h-4 w-4" /> {e.restart}
                 </button>
@@ -281,12 +281,12 @@ export function EligibilityWizard() {
       </div>
 
       {step > 0 && !done && (
-        <button type="button" onClick={() => go(step - 1)} className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-steel hover:text-ink">
+        <button type="button" onClick={() => go(step - 1)} className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-s-muted hover:text-s-fg">
           <ArrowLeft className="h-4 w-4" /> {e.back}
         </button>
       )}
       {!done && (
-        <p className="mt-6 flex items-center gap-2 text-xs text-steel">
+        <p className="mt-6 flex items-center gap-2 text-xs text-s-muted">
           <CircleHelp className="h-4 w-4" /> {e.noPhone}
         </p>
       )}
@@ -297,9 +297,9 @@ export function EligibilityWizard() {
 function StepCard({ title, alt, children }: { title: string; alt?: string; children: React.ReactNode }) {
   return (
     <div>
-      <h2 className="font-display text-3xl font-bold text-ink sm:text-4xl">{title}</h2>
+      <h2 className="font-display text-3xl font-bold text-s-fg sm:text-4xl">{title}</h2>
       {alt && (
-        <p lang="kn" className="mt-1 text-lg font-medium text-steel">
+        <p lang="kn" className="mt-1 text-lg font-medium text-s-muted">
           {alt}
         </p>
       )}
@@ -328,16 +328,16 @@ function ChoiceStep({
               key={key}
               type="button"
               onClick={() => onPick(key)}
-              className={`flex items-center gap-4 rounded-xl border-2 bg-white p-5 text-left transition-all hover:-translate-y-0.5 ${
-                on ? "border-brand-600 bg-brand-50" : "border-brand-900/10 hover:border-brand-600"
+              className={`flex items-center gap-4 rounded-xl border-2 bg-s-card p-5 text-left transition-all hover:-translate-y-0.5 ${
+                on ? "border-s-accent bg-s-soft" : "border-s-card-line hover:border-s-accent"
               }`}
             >
-              <span className={`grid h-12 w-12 shrink-0 place-items-center rounded-lg ${on ? "bg-brand-700 text-white" : "bg-mist text-ink"}`}>
+              <span className={`grid h-12 w-12 shrink-0 place-items-center rounded-lg ${on ? "bg-s-btn text-s-btn-fg" : "bg-s-soft text-s-fg"}`}>
                 <Icon className="h-6 w-6" />
               </span>
               <span>
-                <span className="block text-lg font-bold leading-snug text-ink">{label}</span>
-                {sub && <span className="block text-sm text-ink-3">{sub}</span>}
+                <span className="block text-lg font-bold leading-snug text-s-fg">{label}</span>
+                {sub && <span className="block text-sm text-s-text">{sub}</span>}
               </span>
             </button>
           );

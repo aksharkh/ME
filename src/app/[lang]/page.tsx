@@ -31,11 +31,11 @@ export default async function Home() {
       <Hero />
       <FactsStrip />
 
-      <section className="bg-paper-2 py-20">
+      <section data-sec="schemes" className="bg-s-bg py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading label={s.schemes.label} title={s.schemes.title} alt={s.schemes.alt} sub={s.schemes.sub} />
-            <Link href={localePath(lang, "/schemes")} className="inline-flex items-center gap-2 font-bold text-brand-700 transition-all hover:gap-3">
+            <Link href={localePath(lang, "/schemes")} className="inline-flex items-center gap-2 font-bold text-s-accent transition-all hover:gap-3">
               {s.schemes.link} <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -52,7 +52,7 @@ export default async function Home() {
       <DocChecklist />
       <Examples />
 
-      <section className="border-t border-line bg-paper-2 py-20">
+      <section data-sec="faq" className="border-t border-s-line bg-s-bg py-20">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr]">
           <SectionHeading label={s.faq.label} title={s.faq.title} alt={s.faq.alt} sub={s.faq.sub} />
           <Faq />

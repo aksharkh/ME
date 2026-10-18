@@ -35,7 +35,7 @@ export function EmiCalc({ defaultAmount = 20 * LAKH }: { defaultAmount?: number 
           <RangeField label={c.period} value={years} min={1} max={10} step={1} onChange={setYears} display={(v) => `${v} ${v > 1 ? t.units.yrs : t.units.yr}`} />
 
           <div>
-            <div className="text-sm font-bold text-ink-3">{c.yearly}</div>
+            <div className="text-sm font-bold text-s-text">{c.yearly}</div>
             <div className="mt-3 flex h-36 items-end gap-1.5">
               {r.years.map((y) => {
                 const h = ((y.principal + y.interest) / peak) * 100;
@@ -48,10 +48,10 @@ export function EmiCalc({ defaultAmount = 20 * LAKH }: { defaultAmount?: number 
                       transition={{ type: "spring", stiffness: 140, damping: 20 }}
                       title={`${c.yearShort}${y.year}: ${c.principal} ${inr(y.principal)}, ${c.interest} ${inr(y.interest)}`}
                     >
-                      <motion.div className="bg-brand-300" animate={{ height: `${ih}%` }} />
-                      <div className="flex-1 bg-brand-900" />
+                      <motion.div className="bg-s-accent2" animate={{ height: `${ih}%` }} />
+                      <div className="flex-1 bg-s-num" />
                     </motion.div>
-                    <span className="text-[10px] font-bold text-steel">
+                    <span className="text-[10px] font-bold text-s-muted">
                       {c.yearShort}
                       {y.year}
                     </span>
@@ -59,12 +59,12 @@ export function EmiCalc({ defaultAmount = 20 * LAKH }: { defaultAmount?: number 
                 );
               })}
             </div>
-            <div className="mt-2 flex gap-4 text-xs font-semibold text-steel">
+            <div className="mt-2 flex gap-4 text-xs font-semibold text-s-muted">
               <span className="flex items-center gap-1.5">
-                <span className="h-2.5 w-2.5 rounded-sm bg-brand-900" /> {c.principal}
+                <span className="h-2.5 w-2.5 rounded-sm bg-s-num" /> {c.principal}
               </span>
               <span className="flex items-center gap-1.5">
-                <span className="h-2.5 w-2.5 rounded-sm bg-brand-300" /> {c.interest}
+                <span className="h-2.5 w-2.5 rounded-sm bg-s-accent2" /> {c.interest}
               </span>
             </div>
           </div>
@@ -73,16 +73,16 @@ export function EmiCalc({ defaultAmount = 20 * LAKH }: { defaultAmount?: number 
       result={
         <div className="flex h-full flex-col">
           <BigResult label={c.monthly} value={r.monthly} format={inr} tone="white" />
-          <p className="mt-1 text-sm text-white/60">{fill(c.forMonths, { n: years * 12 })}</p>
+          <p className="mt-1 text-sm text-s-muted">{fill(c.forMonths, { n: years * 12 })}</p>
 
           <div className="my-8 flex items-center gap-6">
             <Donut share={interestShare} />
             <div className="space-y-2 text-sm">
-              <div className="flex items-center gap-2 text-white/80">
-                <span className="h-3 w-3 rounded-sm bg-white" /> {c.principal} {Math.round((1 - interestShare) * 100)}%
+              <div className="flex items-center gap-2 text-s-text">
+                <span className="h-3 w-3 rounded-sm bg-s-fg" /> {c.principal} {Math.round((1 - interestShare) * 100)}%
               </div>
-              <div className="flex items-center gap-2 text-white/80">
-                <span className="h-3 w-3 rounded-sm bg-brand-300" /> {c.interest} {Math.round(interestShare * 100)}%
+              <div className="flex items-center gap-2 text-s-text">
+                <span className="h-3 w-3 rounded-sm bg-s-accent" /> {c.interest} {Math.round(interestShare * 100)}%
               </div>
             </div>
           </div>
@@ -90,7 +90,7 @@ export function EmiCalc({ defaultAmount = 20 * LAKH }: { defaultAmount?: number 
           <ResultRow label={c.amount} value={amount} format={inr} />
           <ResultRow label={c.totalInterest} value={r.interest} format={inr} />
           <ResultRow label={c.total} value={r.total} format={inr} strong />
-          <p className="mt-4 text-xs text-white/50">
+          <p className="mt-4 text-xs text-s-muted">
             {c.note}
           </p>
         </div>
@@ -104,13 +104,13 @@ function Donut({ share }: { share: number }) {
   const C = 2 * Math.PI * R;
   return (
     <svg viewBox="0 0 110 110" className="h-28 w-28 shrink-0 -rotate-90">
-      <circle cx="55" cy="55" r={R} fill="none" stroke="#fff" strokeWidth="14" />
+      <circle cx="55" cy="55" r={R} fill="none" style={{ stroke: "var(--sf-fg)" }} strokeWidth="14" />
       <motion.circle
         cx="55"
         cy="55"
         r={R}
         fill="none"
-        stroke="#8fd9ae"
+        style={{ stroke: "var(--sf-accent)" }}
         strokeWidth="14"
         strokeDasharray={C}
         animate={{ strokeDashoffset: C * (1 - share) }}

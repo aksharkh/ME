@@ -63,6 +63,30 @@ const en = {
     officeLabel: "Office",
   },
 
+  theme: {
+    button: "Change colours",
+    title: "Choose a colour theme",
+    sub: "Tap a theme and the whole site changes. The choice is saved on this device.",
+    current: "In use",
+    names: {
+      brass: "Brass & Ivory",
+      classic: "Classic Green",
+      forest: "Forest & Mint",
+      sage: "Sage & Stone",
+      emerald: "Emerald Light",
+      midnight: "Midnight Forest",
+    },
+    notes: {
+      brass: "Card green with brass gold, ivory and charcoal",
+      classic: "The first version — green from top to bottom",
+      forest: "Green navbar, light mint sections, card-green footer",
+      sage: "Soft sage and warm stone, rounder corners",
+      emerald: "Mostly white and airy, crisp corners",
+      midnight: "Dark mode with the card green",
+    },
+    close: "Close",
+  },
+
 
   footer: {
     line: "ನಿಮ್ಮ ವ್ಯಾಪಾರ, ಸರ್ಕಾರದ ಬೆಂಬಲ — ನಾವು ಕೊಡಿಸುತ್ತೇವೆ.",

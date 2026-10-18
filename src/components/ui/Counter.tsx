@@ -12,7 +12,7 @@ export function Counter({ value, prefix = "", suffix = "", duration = 2 }: { val
 
   useEffect(() => {
     const el = ref.current;
-    if (!el || !inView) return;
+    if (!el || !inView || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const controls = animate(0, value, {
       duration,
       ease: [0.16, 1, 0.3, 1],

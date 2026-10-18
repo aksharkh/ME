@@ -19,28 +19,28 @@ export function Hero() {
   const fill = ((cost - 5 * LAKH) / (50 * LAKH - 5 * LAKH)) * 100;
 
   return (
-    <section className="blueprint-dark relative overflow-hidden bg-brand-900 text-white">
+    <section data-sec="hero" className="blueprint relative overflow-hidden bg-s-bg text-s-text">
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 pb-16 pt-10 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:pb-20 lg:pt-14">
         <div>
-          <p className="rise flex items-center gap-2.5 text-sm font-semibold text-brand-300">
+          <p className="rise flex items-center gap-2.5 text-sm font-semibold text-s-accent">
             <BarsMark className="h-5 w-auto" />
             {h.tagline}
           </p>
 
           <h1
-            className={`rise font-display mt-5 font-bold leading-[1.06] ${
+            className={`rise font-display mt-5 font-bold leading-[1.06] text-s-fg ${
               lang === "kn" ? "text-[2rem] sm:text-[2.6rem] lg:text-[3rem]" : "text-[2.5rem] sm:text-5xl lg:text-[3.7rem]"
             }`}
             style={{ animationDelay: "0.05s" }}
           >
-            {h.titleLead} <span className="text-brand-300">{h.titleHighlight}</span>
+            {h.titleLead} <span className="text-s-accent">{h.titleHighlight}</span>
           </h1>
           {h.alt && (
-            <p lang="kn" className="rise mt-3 text-xl font-semibold text-white/60" style={{ animationDelay: "0.15s" }}>
+            <p lang="kn" className="rise mt-3 text-xl font-semibold text-s-muted" style={{ animationDelay: "0.15s" }}>
               {h.alt}
             </p>
           )}
-          <p className="rise mt-5 max-w-xl text-lg leading-relaxed text-white/75" style={{ animationDelay: "0.25s" }}>
+          <p className="rise mt-5 max-w-xl text-lg leading-relaxed text-s-text" style={{ animationDelay: "0.25s" }}>
             {h.sub}
           </p>
 
@@ -48,19 +48,19 @@ export function Hero() {
             <Link href={href("/eligibility")} className={btn.mint}>
               {t.cta.eligibilityLong} <ArrowRight className="h-5 w-5" />
             </Link>
-            <a href={whatsappLink(t.cta.whatsappMessage)} target="_blank" rel="noopener noreferrer" className={btn.whatsapp}>
-              <MessageCircle className="h-5 w-5" /> {t.cta.whatsapp}
+            <a href={whatsappLink(t.cta.whatsappMessage)} target="_blank" rel="noopener noreferrer" className={btn.outlineLight}>
+              <MessageCircle className="h-5 w-5 text-[#25D366]" /> {t.cta.whatsapp}
             </a>
           </div>
 
-          <div className="rise mt-10 max-w-xl rounded-2xl bg-white p-5 text-ink shadow-[0_24px_50px_-24px_rgba(0,0,0,0.6)]" style={{ animationDelay: "0.45s" }}>
+          <div className="sf-paper rise mt-10 max-w-xl rounded-2xl border border-s-card-line bg-s-bg p-5 text-s-text shadow-[0_24px_50px_-24px_rgba(0,0,0,0.6)]" style={{ animationDelay: "0.45s" }}>
             <div className="flex flex-wrap items-end justify-between gap-2">
-              <label htmlFor="hero-cost" className="text-sm font-bold text-ink-3">
-                {h.costLabel} <span className="tabular text-ink">{short(cost)}</span>
+              <label htmlFor="hero-cost" className="text-sm font-bold text-s-text">
+                {h.costLabel} <span className="tabular text-s-fg">{short(cost)}</span>
               </label>
               <div className="text-right">
-                <div className="text-[11px] font-bold uppercase tracking-wider text-steel">{h.subsidyUpTo}</div>
-                <div className="font-display text-3xl font-bold leading-tight text-brand-600">
+                <div className="text-[11px] font-bold uppercase tracking-wider text-s-muted">{h.subsidyUpTo}</div>
+                <div className="font-display text-3xl font-bold leading-tight text-s-num">
                   <AnimatedNumber value={subsidy} format={short} />
                 </div>
               </div>
@@ -76,20 +76,20 @@ export function Hero() {
               onChange={(e) => setCost(Number(e.target.value))}
               style={{ ["--fill" as string]: `${fill}%` }}
             />
-            <p className="mt-2 text-xs text-steel">
+            <p className="mt-2 text-xs text-s-muted">
               {h.note}{" "}
-              <Link href={href("/calculators#pmegp")} className="font-bold text-brand-700 underline-offset-2 hover:underline">
+              <Link href={href("/calculators#pmegp")} className="font-bold text-s-accent underline-offset-2 hover:underline">
                 {h.calcLink}
               </Link>
             </p>
           </div>
 
           <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
-            <a href={mapsLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-white/75 hover:text-white">
-              <MapPin className="h-4 w-4 text-brand-300" /> {h.office}
+            <a href={mapsLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-s-text hover:text-s-fg">
+              <MapPin className="h-4 w-4 text-s-accent" /> {h.office}
             </a>
-            <a href={site.phoneHref} className="flex items-center gap-1.5 font-bold text-white hover:text-brand-300">
-              <Phone className="h-4 w-4 text-brand-300" /> {site.phoneDisplay}
+            <a href={site.phoneHref} className="flex items-center gap-1.5 font-bold text-s-fg hover:text-s-accent">
+              <Phone className="h-4 w-4 text-s-accent" /> {site.phoneDisplay}
             </a>
           </div>
         </div>
@@ -98,7 +98,7 @@ export function Hero() {
           <FactoryScene />
         </div>
       </div>
-      <div className="hazard h-1.5 w-full" />
+      <div className="hazard h-1 w-full" />
     </section>
   );
 }

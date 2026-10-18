@@ -68,7 +68,7 @@ export async function Examples() {
   const short = (n: number) => formatShort(n, t.units);
 
   return (
-    <section className="py-20">
+    <section data-sec="examples" className="bg-s-bg py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading label={s.label} title={s.title} alt={s.alt} sub={s.sub} />
 
@@ -78,28 +78,28 @@ export async function Examples() {
             const f = figures(p.id, t.examples.labels, short);
             return (
               <Reveal key={p.id} delay={i * 0.06} className="h-full">
-                <article className="flex h-full flex-col rounded-xl border-2 border-brand-900/10 bg-white p-6">
-                  <span className="self-start rounded bg-brand-900 px-2 py-1 text-xs font-bold text-white">{p.scheme}</span>
-                  <h3 className="font-display mt-4 text-lg font-bold leading-snug text-ink">{item.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-steel">{item.desc}</p>
+                <article className="flex h-full flex-col rounded-xl border-2 border-s-card-line bg-s-card p-6">
+                  <span className="self-start rounded bg-s-strong px-2 py-1 text-xs font-bold text-s-on-strong">{p.scheme}</span>
+                  <h3 className="font-display mt-4 text-lg font-bold leading-snug text-s-fg">{item.title}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-s-muted">{item.desc}</p>
 
-                  <div className="mt-5 rounded-lg bg-brand-50 p-4">
-                    <div className="text-xs font-bold uppercase tracking-wider text-brand-700">{f.headline.label}</div>
-                    <div className="font-display tabular mt-0.5 text-3xl font-bold text-brand-700">{f.headline.value}</div>
+                  <div className="mt-5 rounded-lg bg-s-soft p-4">
+                    <div className="text-xs font-bold uppercase tracking-wider text-s-accent">{f.headline.label}</div>
+                    <div className="font-display tabular mt-0.5 text-3xl font-bold text-s-num">{f.headline.value}</div>
                   </div>
 
                   <dl className="mt-4 flex-1 text-sm">
                     {f.rows.map(([label, value]) => (
-                      <div key={label} className="flex items-baseline justify-between gap-3 border-b border-dashed border-line py-2 last:border-0">
-                        <dt className="text-ink-3">{label}</dt>
-                        <dd className="tabular font-bold text-ink">{value}</dd>
+                      <div key={label} className="flex items-baseline justify-between gap-3 border-b border-dashed border-s-line py-2 last:border-0">
+                        <dt className="text-s-text">{label}</dt>
+                        <dd className="tabular font-bold text-s-fg">{value}</dd>
                       </div>
                     ))}
                   </dl>
 
                   <Link
                     href={localePath(lang, p.href)}
-                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-brand-700 transition-all hover:gap-2.5"
+                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-s-accent transition-all hover:gap-2.5"
                   >
                     {s.cta} <ArrowRight className="h-4 w-4" />
                   </Link>
@@ -108,7 +108,7 @@ export async function Examples() {
             );
           })}
         </div>
-        <p className="mt-6 text-xs text-steel">{s.note}</p>
+        <p className="mt-6 text-xs text-s-muted">{s.note}</p>
       </div>
     </section>
   );

@@ -1,14 +1,17 @@
 @import "tailwindcss";
 
 /*
- * Palette built from the MSME Marg visiting card:
- *   brand-900 #014425 is the exact card green; lighter and darker tints are derived from it.
- *   sage-500 #568e57 is the accent underline on the light card.
+ * Palette built around the MSME Marg card green (#014425):
+ *   brand-*    the card green and its tints — the brand colour, used for primary actions and hero bands
+ *   gold-*     brass gold — the accent (numbers, highlights, CTAs on dark), used sparingly
+ *   cream-*    warm ivory — light sections, so the page breathes between the dark bands
+ *   charcoal-* green-black — the second dark tone (top bar, process, footer)
+ *   sage-500   the accent underline from the light visiting card
  */
 @theme {
-  --color-brand-50: #f1f8f3;
-  --color-brand-100: #e1f1e6;
-  --color-brand-200: #c2e3cd;
+  --color-brand-50: #eef6f1;
+  --color-brand-100: #dcece2;
+  --color-brand-200: #b9d9c5;
   --color-brand-300: #8fd9ae;
   --color-brand-400: #4fb37c;
   --color-brand-500: #23955a;
@@ -18,20 +21,38 @@
   --color-brand-900: #014425;
   --color-brand-950: #012c18;
 
+  --color-gold-50: #fbf6ea;
+  --color-gold-100: #f6ebcf;
+  --color-gold-200: #edd9a6;
+  --color-gold-300: #e5c67c;
+  --color-gold-400: #ddb150;
+  --color-gold-500: #c99a34;
+  --color-gold-600: #a67c22;
+  --color-gold-700: #84611a;
+  --color-gold-800: #654a15;
+
+  --color-cream-50: #fcfaf5;
+  --color-cream-100: #f7f2e7;
+  --color-cream-200: #ece4d3;
+
+  --color-charcoal-800: #1c2621;
+  --color-charcoal-900: #121a16;
+  --color-charcoal-950: #0b110e;
+
   --color-sage-100: #e5efe3;
   --color-sage-500: #568e57;
   --color-sage-700: #3d6a3e;
 
-  --color-ink: #0d2018;
-  --color-ink-2: #284034;
-  --color-ink-3: #4a6155;
+  --color-ink: #14201a;
+  --color-ink-2: #2c3a33;
+  --color-ink-3: #4d5a53;
   --color-paper: #ffffff;
-  --color-paper-2: #f3f8f4;
-  --color-steel: #5f7268;
-  --color-steel-2: #93a59a;
-  --color-mist: #edf4ef;
-  --color-line: #dbe6de;
-  --color-gold: #e2b33c;
+  --color-paper-2: #f7f2e7;
+  --color-steel: #6a716b;
+  --color-steel-2: #9ba19c;
+  --color-mist: #f1ece1;
+  --color-line: #e7e0d1;
+  --color-gold: #ddb150;
 
   --font-display: var(--font-ui-face), var(--font-kannada-face), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-ui-face), var(--font-kannada-face), "Nirmala UI", ui-sans-serif, system-ui, sans-serif;
@@ -82,24 +103,45 @@
   }
 }
 
+/* Section role tokens — values come from src/lib/themes.ts (themeCss) for the active data-theme */
+@theme inline {
+  --color-s-bg: var(--sf-bg);
+  --color-s-fg: var(--sf-fg);
+  --color-s-text: var(--sf-text);
+  --color-s-muted: var(--sf-muted);
+  --color-s-line: var(--sf-line);
+  --color-s-card: var(--sf-card);
+  --color-s-card-line: var(--sf-card-line);
+  --color-s-soft: var(--sf-soft);
+  --color-s-accent: var(--sf-accent);
+  --color-s-accent2: var(--sf-accent2);
+  --color-s-num: var(--sf-num);
+  --color-s-btn: var(--sf-btn);
+  --color-s-btn-fg: var(--sf-btn-fg);
+  --color-s-strong: var(--sf-strong);
+  --color-s-on-strong: var(--sf-on-strong);
+  --color-s-field: var(--sf-field);
+  --color-s-field-line: var(--sf-field-line);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background: var(--color-paper);
-  color: var(--color-ink);
+  background: var(--sf-bg);
+  color: var(--sf-text);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: var(--color-brand-700);
-  color: white;
+  background: var(--sf-btn);
+  color: var(--sf-btn-fg);
 }
 
 :focus-visible {
-  outline: 3px solid var(--color-brand-400);
+  outline: 3px solid var(--sf-accent2);
   outline-offset: 2px;
 }
 
@@ -129,33 +171,22 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-/* Subtle blueprint grid used behind industrial sections */
+/* Subtle blueprint grid used behind industrial sections — the line colour follows the section's surface */
 .blueprint {
   background-image:
-    linear-gradient(rgba(1, 68, 37, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(1, 68, 37, 0.055) 1px, transparent 1px);
+    linear-gradient(var(--sf-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--sf-grid) 1px, transparent 1px);
   background-size: 32px 32px;
 }
 
-.blueprint-dark {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
-  background-size: 32px 32px;
-}
-
-/* Thin industrial stripe used as a section edge — in brand greens */
+/* Thin trim used as a section edge — each theme sets its own */
 .hazard {
-  background: repeating-linear-gradient(
-    -45deg,
-    var(--color-brand-300) 0 10px,
-    var(--color-brand-700) 10px 20px
-  );
+  background: var(--t-trim);
 }
 
 /* Moving conveyor belt texture */
 .belt {
-  background-color: var(--color-brand-800);
+  background-color: var(--il-belt);
   background-image: repeating-linear-gradient(
     90deg,
     rgba(255, 255, 255, 0.22) 0 2px,
@@ -212,10 +243,10 @@ input[type="range"].range {
   border-radius: 999px;
   background: linear-gradient(
     to right,
-    var(--color-brand-600) 0%,
-    var(--color-brand-600) var(--fill, 50%),
-    var(--color-mist) var(--fill, 50%),
-    var(--color-mist) 100%
+    var(--sf-btn) 0%,
+    var(--sf-btn) var(--fill, 50%),
+    var(--sf-soft) var(--fill, 50%),
+    var(--sf-soft) 100%
   );
   outline: none;
   cursor: pointer;
@@ -226,7 +257,7 @@ input[type="range"].range::-webkit-slider-thumb {
   height: 26px;
   border-radius: 999px;
   background: white;
-  border: 6px solid var(--color-brand-600);
+  border: 6px solid var(--sf-btn);
   box-shadow: 0 4px 12px rgba(1, 68, 37, 0.35);
   transition: transform 0.15s;
 }
@@ -238,11 +269,11 @@ input[type="range"].range::-moz-range-thumb {
   height: 16px;
   border-radius: 999px;
   background: white;
-  border: 6px solid var(--color-brand-600);
+  border: 6px solid var(--sf-btn);
   box-shadow: 0 4px 12px rgba(1, 68, 37, 0.35);
 }
 input[type="range"].range:focus-visible::-webkit-slider-thumb {
-  outline: 3px solid var(--color-brand-900);
+  outline: 3px solid var(--sf-accent2);
   outline-offset: 2px;
 }
 

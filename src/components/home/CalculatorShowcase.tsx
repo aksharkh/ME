@@ -15,11 +15,11 @@ export function CalculatorShowcase() {
   const current = calculators.find((c) => c.id === active)!;
 
   return (
-    <section id="calculators" className="relative border-t border-line py-20">
+    <section id="calculators" data-sec="calcs" className="relative border-t border-s-line bg-s-bg py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading label={s.label} title={s.title} alt={s.alt} sub={s.sub} />
-          <Link href={href("/calculators")} className="inline-flex items-center gap-2 font-bold text-brand-700 transition-all hover:gap-3">
+          <Link href={href("/calculators")} className="inline-flex items-center gap-2 font-bold text-s-accent transition-all hover:gap-3">
             {s.link} <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -35,10 +35,10 @@ export function CalculatorShowcase() {
                 aria-selected={on}
                 onClick={() => setActive(c.id)}
                 className={`flex shrink-0 items-center gap-2 rounded-lg border-2 px-4 py-2.5 text-sm font-bold transition-colors ${
-                  on ? "border-brand-900 bg-brand-900 text-white" : "border-line bg-white text-ink-3 hover:border-brand-900/40"
+                  on ? "border-s-strong bg-s-strong text-s-on-strong" : "border-s-line bg-s-card text-s-text hover:border-s-accent"
                 }`}
               >
-                <Icon className={`h-4 w-4 ${on ? "text-brand-300" : ""}`} />
+                <Icon className={`h-4 w-4 ${on ? "text-s-on-strong" : ""}`} />
                 {t.calc.meta[c.id].short}
               </button>
             );

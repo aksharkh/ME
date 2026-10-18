@@ -14,13 +14,13 @@ export default async function NotFound() {
     <section className="mx-auto flex max-w-3xl flex-col items-center px-4 py-24 text-center">
       <svg viewBox="-70 -70 140 140" className="h-32 w-32" aria-hidden>
         <g className="gear animate-spin-slow">
-          <path d={GEAR} fill="#157a46" />
-          <circle r="22" fill="#ffffff" />
+          <path d={GEAR} style={{ fill: "var(--sf-accent2)" }} />
+          <circle r="22" style={{ fill: "var(--sf-bg)" }} />
         </g>
       </svg>
       <div className="hazard mt-8 h-2 w-40" />
-      <h1 className="font-display mt-8 text-4xl font-bold text-ink sm:text-5xl">{t.notFound.title}</h1>
-      <p className="mt-3 text-lg text-ink-3">{t.notFound.sub}</p>
+      <h1 className="font-display mt-8 text-4xl font-bold text-s-fg sm:text-5xl">{t.notFound.title}</h1>
+      <p className="mt-3 text-lg text-s-text">{t.notFound.sub}</p>
       <div className="mt-8 flex flex-wrap justify-center gap-4">
         <Link href={localePath(lang, "/")} className={btn.primary}>
           {t.notFound.home} <ArrowRight className="h-5 w-5" />

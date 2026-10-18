@@ -14,7 +14,7 @@ export default async function EligibilityPage() {
   return (
     <>
       <PageHero label={e.label} title={e.title} alt={e.alt} sub={e.sub} crumbs={[{ href: "/eligibility", label: t.nav.eligibility }]} />
-      <section className="px-4 py-14 sm:px-6">
+      <section data-sec="page" className="bg-s-bg px-4 py-14 sm:px-6">
         <EligibilityWizard />
       </section>
     </>
